@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>STA Travel Manager - Gestion des Clients</title>
+    <link rel="stylesheet" href="./clients.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="clients-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-left">
+          <button class="back-btn" id="backBtn">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <img
+            src="./assets/logo.gif"
+            alt="Sana Travel Agency"
+            class="header-logo"
+          />
+          <h1>Gestion des Clients</h1>
+        </div>
+        <div class="header-right">
+          <div class="user-info">
+            <span class="user-name" id="userName">Administrateur</span>
+            <span class="user-role" id="userRole">Admin</span>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Déconnexion</button>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Actions Bar -->
+        <div class="actions-bar">
+          <button class="add-client-btn" id="addClientBtn">
+            <i class="fas fa-plus"></i>
+            Nouveau Client
+          </button>
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Rechercher un client..."
+            />
+          </div>
+        </div>
+
+        <!-- Clients Table -->
+        <div class="table-container">
+          <table class="clients-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Usine</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Adultes</th>
+                <th>Enfants</th>
+                <th>Nuits</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Arrangement</th>
+                <th>Tarif Achat</th>
+                <th>Tarif Vente</th>
+                <th>Coefficient</th>
+                <th>Montant Séjour</th>
+                <th>Total Achat</th>
+                <th>Hôtel</th>
+                <th>Région</th>
+                <th>Banque</th>
+                <th>Statut Annulation</th>
+                <th>Statut Paiement</th>
+                <th>Créé par</th>
+                <th>Modifié par</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="clientsTableBody">
+              <!-- Les clients seront ajoutés dynamiquement -->
+            </tbody>
+          </table>
+
+          <div class="empty-state" id="emptyState" style="display: none;">
+            <i class="fas fa-users"></i>
+            <h3>Aucun client trouvé</h3>
+            <p>Commencez par ajouter votre premier client</p>
+            <button class="add-first-client-btn" id="addFirstClientBtn">
+              <i class="fas fa-plus"></i>
+              Ajouter un client
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal pour ajouter/modifier un client -->
+    <div class="modal" id="clientModal">
+      <div class="modal-content large">
+        <div class="modal-header">
+          <h2 id="modalTitle">Nouveau Client</h2>
+          <button class="close-btn" id="closeModalBtn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <form class="client-form" id="clientForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="num">ID Client</label>
+              <input type="text" id="num" name="num" readonly />
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom *</label>
+              <input type="text" id="nom" name="nom" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom *</label>
+              <input type="text" id="prenom" name="prenom" required />
+            </div>
+            <div class="form-group">
+              <label for="usine">Usine</label>
+              <input type="text" id="usine" name="usine" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" />
+            </div>
+            <div class="form-group">
+              <label for="telephone">Téléphone *</label>
+              <input type="tel" id="telephone" name="telephone" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="adresse">Adresse</label>
+              <textarea id="adresse" name="adresse" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="nbreAdult">Nombre d'adultes</label>
+              <input type="number" id="nbreAdult" name="nbreAdult" min="0" value="0">
+            </div>
+            <div class="form-group">
+              <label for="nbreEnfant">Nombre d'enfants</label>
+              <input type="number" id="nbreEnfant" name="nbreEnfant" min="0" value="0">
+            </div>
+            <div class="form-group">
+              <label for="nbreNuit">Nombre de Nuits</label>
+              <input type="number" id="nbreNuit" name="nbreNuit" min="0" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dateDebut">Date Début</label>
+              <input type="date" id="dateDebut" name="dateDebut" />
+            </div>
+            <div class="form-group">
+              <label for="dateFin">Date Fin</label>
+              <input type="date" id="dateFin" name="dateFin" readonly />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="arrangement">Arrangement</label>
+              <select id="arrangement" name="arrangement">
+                <option value="">Sélectionner un arrangement</option>
+                <option value="LPD">LPD</option>
+                <option value="DP">DP</option>
+                <option value="DP+">DP+</option>
+                <option value="PC">PC</option>
+                <option value="PC+">PC+</option>
+                <option value="All Inclusive">All Inclusive</option>
+                <option value="Soft All Inclusive">Soft All Inclusive</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="tarifAchat">Tarif Achat</label>
+              <input
+                type="number"
+                id="tarifAchat"
+                name="tarifAchat"
+                step="0.01"
+                min="0"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tarifVente">Tarif Vente</label>
+              <input
+                type="number"
+                id="tarifVente"
+                name="tarifVente"
+                step="0.01"
+                min="0"
+              />
+            </div>
+            <div class="form-group">
+              <label for="coefficient">Coefficient</label>
+              <input
+                type="number"
+                id="coefficient"
+                name="coefficient"
+                step="0.01"
+                min="0"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="montantSejour">Montant Séjour</label>
+              <input
+                type="number"
+                id="montantSejour"
+                name="montantSejour"
+                step="0.01"
+                min="0"
+          
+              />
+            </div>
+            <div class="form-group">
+              <label for="totalAchat">Total Achat</label>
+              <input
+                type="number"
+                id="totalAchat"
+                name="totalAchat"
+                step="0.01"
+                min="0"
+               
+              />
+            </div>
+            <div class="form-group">
+              <label for="nomHotel">Nom Hôtel</label>
+              <input type="text" id="nomHotel" name="nomHotel" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="region">Région</label>
+              <select id="region" name="region">
+                <!-- Les options seront ajoutées dynamiquement par JavaScript -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="bank">Banque</label>
+              <input type="text" id="bank" name="bank" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="statutAnnulation">Statut d'annulation</label>
+              <select id="statutAnnulation" name="statutAnnulation">
+                <option value="actif">Actif</option>
+                <option value="annule">Annulé</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="statutPaiement">Statut de Paiement</label>
+              <select id="statutPaiement" name="statutPaiement">
+                <option value="rien_paye">Rien Payé</option>
+                <option value="avance_payee">Avance Payée</option>
+                <option value="tout_paye">Tout Payé</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label>Avances Payées</label>
+            <div id="advancesContainer">
+              <!-- Les champs d'avance seront ajoutés dynamiquement ici -->
+            </div>
+            <button type="button" class="add-advance-btn" id="addAdvanceBtn">
+              <i class="fas fa-plus"></i> Ajouter une avance
+            </button>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="cancel-btn" id="cancelBtn">Annuler</button>
+            <button type="submit" class="save-btn" id="saveBtn">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de confirmation de suppression -->
+    <div class="modal" id="deleteModal">
+      <div class="modal-content small">
+        <div class="modal-header">
+          <h2>Confirmer la suppression</h2>
+          <button class="close-btn" id="closeDeleteModalBtn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Êtes-vous sûr de vouloir supprimer ce client ?</p>
+          <p><strong id="clientToDelete"></strong></p>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" id="cancelDeleteBtn">
+            Annuler
+          </button>
+          <button type="button" class="delete-btn" id="confirmDeleteBtn">
+            Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./clients.js"></script>
+  </body>
+</html>

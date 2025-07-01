@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>STA Travel Manager - Connexion</title>
+    <link rel="stylesheet" href="./login.css">
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-card">
+        <div class="logo-section">
+          <img src="./assets/logo.gif" alt="Sana Travel Agency" class="logo">
+          <h1>Sana Travel Agency</h1>
+          <p class="subtitle">Système de gestion pour agence de voyage</p>
+        </div>
+        
+        <div class="form-section">
+          <h2>Sélectionner un utilisateur</h2>
+          
+          <div class="user-selection">
+            <div class="user-option" data-user="admin">
+              <div class="user-avatar">AD</div>
+              <div class="user-info">
+                <div class="user-name">Administrateur</div>
+                <div class="user-role">Admin</div>
+              </div>
+            </div>
+            
+            <div class="user-option" data-user="agent1">
+              <div class="user-avatar">A1</div>
+              <div class="user-info">
+                <div class="user-name">Agent Commercial 1</div>
+                <div class="user-role">Agent</div>
+              </div>
+            </div>
+            
+            <div class="user-option" data-user="agent2">
+              <div class="user-avatar">A2</div>
+              <div class="user-info">
+                <div class="user-name">Agent Commercial 2</div>
+                <div class="user-role">Agent</div>
+              </div>
+            </div>
+            
+            <div class="user-option" data-user="comptable">
+              <div class="user-avatar">CO</div>
+              <div class="user-info">
+                <div class="user-name">Comptable</div>
+                <div class="user-role">Comptable</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="password-section">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" placeholder="Entrez votre mot de passe">
+          </div>
+          
+          <button class="login-btn" id="loginBtn">Se connecter</button>
+        </div>
+      </div>
+    </div>
+    
+    <script src="./login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>STA Travel Manager - Tableau de Bord</title>
+    <link rel="stylesheet" href="./dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-left">
+          <img src="./assets/logo.gif" alt="Sana Travel Agency" class="header-logo">
+          <h1>Sana Travel Agency</h1>
+        </div>
+        <div class="header-right">
+          <div class="user-info">
+            <span class="user-name" id="userName">Administrateur</span>
+            <span class="user-role" id="userRole">Admin</span>
+          </div>
+          <button class="logout-btn" id="logoutBtn">Déconnexion</button>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card blue">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-title">TOTAL CLIENTS</div>
+              <div class="stat-number" id="totalClients">0</div>
+              <div class="stat-growth" id="clientsGrowth">+12% ce mois</div>
+            </div>
+          </div>
+
+        
+
+          <div class="stat-card green">
+            <div class="stat-icon">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-title">CHIFFRE D'AFFAIRES</div>
+              <div class="stat-number"><span id="revenue">0,000</span> DT</div>
+              <div class="stat-growth" id="revenueGrowth">+15% ce mois</div>
+            </div>
+          </div>
+
+          <div class="stat-card orange">
+            <div class="stat-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-title">EN ATTENTE</div>
+              <div class="stat-number" id="pending">0</div>
+              <div class="stat-growth" id="pendingGrowth">-3% ce mois</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+          <div class="content-section">
+            <div class="section-header">
+              <h2>Clients Récents</h2>
+              <a href="./clients.html" class="view-all-link">Voir tout</a>
+            </div>
+            <div class="recent-trips-container" id="recentTripsContainer">
+              <!-- Les clients récents seront ajoutés dynamiquement -->
+            </div>
+          </div>
+
+          <div class="content-section">
+            <div class="section-header">
+              <h2>Actions Rapides</h2>
+            </div>
+            <div class="quick-actions">
+              <button class="action-btn" id="newClientBtn">
+                <div class="action-icon blue">
+                  <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="action-text">
+                  <div class="action-title">Nouveau Client</div>
+                  <div class="action-subtitle">Ajouter un client</div>
+                </div>
+              </button>
+
+              <button class="action-btn" id="newTripBtn">
+                <div class="action-icon cyan">
+                  <i class="fas fa-plus-circle"></i>
+                </div>
+                <div class="action-text">
+                  <div class="action-title">Facture</div>
+                  <div class="action-subtitle">Créer une facture</div>
+                </div>
+              </button>
+
+              <button class="action-btn" id="importExcelBtn">
+                <div class="action-icon teal">
+                  <i class="fas fa-file-excel"></i>
+                </div>
+                <div class="action-text">
+                  <div class="action-title">Import Excel</div>
+                  <div class="action-subtitle">Importer des données</div>
+                </div>
+              </button>
+
+              <button class="action-btn" id="exportDataBtn">
+                <div class="action-icon blue-light">
+                  <i class="fas fa-download"></i>
+                </div>
+                <div class="action-text">
+                  <div class="action-title">Export Données</div>
+                  <div class="action-subtitle">Exporter vers Excel</div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./dashboard.js"></script>
+  </body>
+</html>

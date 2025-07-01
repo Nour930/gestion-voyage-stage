@@ -1,0 +1,428 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #2c3e50;
+}
+
+.dashboard-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background: white;
+  padding: 15px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.header-left h1 {
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-info {
+  text-align: right;
+}
+
+.user-name {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.user-role {
+  display: block;
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.logout-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 30px;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+.stat-card.blue .stat-icon {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.stat-card.cyan .stat-icon {
+  background: linear-gradient(135deg, #1abc9c, #16a085);
+}
+
+.stat-card.green .stat-icon {
+  background: linear-gradient(135deg, #27ae60, #229954);
+}
+
+.stat-card.orange .stat-icon {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #7f8c8d;
+  margin-bottom: 8px;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.stat-growth {
+  font-size: 14px;
+  color: #27ae60;
+  font-weight: 500;
+}
+
+/* Content Grid */
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+.content-section {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.section-header h2 {
+  color: #2c3e50;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.view-all-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.view-all-link:hover {
+  color: #2980b9;
+}
+
+/* Recent Trips (Clients Récents) */
+.recent-trips-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recent-trip-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 4px solid #3498db;
+  transition: all 0.3s ease;
+}
+
+.recent-trip-item:hover {
+  background: #ecf0f1;
+  transform: translateX(5px);
+}
+
+.trip-info {
+  flex: 1;
+}
+
+.trip-client {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.trip-details {
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.trip-destination {
+  font-weight: 500;
+  color: #3498db;
+}
+
+.trip-dates {
+  color: #95a5a6;
+  font-size: 13px;
+}
+
+.trip-amount {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.amount {
+  font-weight: 700;
+  color: #27ae60;
+  font-size: 16px;
+}
+
+.status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-payé {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-avance {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-en-attente {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status-annulé {
+  background: #f5c6cb;
+  color: #721c24;
+}
+
+.empty-recent-trips {
+  text-align: center;
+  padding: 40px 20px;
+  color: #7f8c8d;
+}
+
+.empty-recent-trips p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: none;
+  background: #f8f9fa;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.action-btn:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.action-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+}
+
+.action-icon.blue {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.action-icon.cyan {
+  background: linear-gradient(135deg, #1abc9c, #16a085);
+}
+
+.action-icon.teal {
+  background: linear-gradient(135deg, #17a2b8, #138496);
+}
+
+.action-icon.blue-light {
+  background: linear-gradient(135deg, #6c5ce7, #5a4fcf);
+}
+
+.action-title {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+.action-subtitle {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .header {
+    padding: 15px 20px;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .stat-card {
+    padding: 20px;
+  }
+  
+  .stat-number {
+    font-size: 28px;
+  }
+  
+  .content-section {
+    padding: 20px;
+  }
+  
+  .recent-trip-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .trip-amount {
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .recent-trip-item {
+    padding: 15px;
+  }
+  
+  .trip-client {
+    font-size: 15px;
+  }
+  
+  .amount {
+    font-size: 15px;
+  }
+}
